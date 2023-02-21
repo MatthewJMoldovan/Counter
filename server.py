@@ -5,6 +5,8 @@ app.secret_key = "Password"
 
 @app.route("/")
 def index():
+    if not 'count' in session:
+        session['count'] = 0
     session['count'] += 1
     return render_template('index.html', click_count = session['count'])
 
